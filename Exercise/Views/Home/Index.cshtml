@@ -14,12 +14,18 @@
     <script src="/Scripts/lib/jquery/jquery-1.9.1.js"></script>
     <script src="/Scripts/lib/jquery/jquery-1.9.1.min.js"></script>
     <script src="/Scripts/lib/angular/angular-route.js"></script>
+    <script src="/Scripts/lib/bootstrap/bootstrap.js"></script>
+    <script src="/Scripts/lib/bootstrap/bootstrap.min.js"></script>
+
 </head>
 <body id="home" ng-app="app.Home">
     <div id="mainBody" ng-controller="homeController" ng-init="init()">
+
         <div class="container">
             <div class="row">
-                <div class="col-md-8 col-md-offset-2">
+                <div class="col-md-2">
+                    </div>
+                <div class="col-md-8">
                     <form name="claimForm" class="box">
                         <fieldset>
                             <div class="container">
@@ -64,11 +70,11 @@
                                     <div class="container ">
                                         <div class="col-md-1"></div>
                                         <div class="col-md-4">
-                                            <label>Attach {{pet}}'s invoice for us here</label>
+                                            <label>Attach {{pet}}'s invoice for us here  </label>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row " ng-hide="hideDiv">
+                                <div class="row" ng-hide="hideDiv">
                                     <div class="container ">
                                         <div class="col-md-1"></div>
                                         <div class="col-md-4">
@@ -77,7 +83,38 @@
                                             <div>
                                                 <label class="hideFiles" for="fileselect">Files to upload:</label>
                                                 <input type="file" id="fileselect" name="fileselect[]" multiple="multiple" />
-                                                <div id="filedrag"><span class="glyphicon glyphicon-file"></span>Drag and drop, or <a href="#" id="uploadLink" ng-click="submitUpload()" class="link">select from inbox</a> </div>
+                                                <div id="filedrag" ng-model="nFileDrag"><span class="glyphicon glyphicon-file"></span>Drag and drop, or <a href="#" id="uploadLink" ng-click="submitUpload()" class="link">select from inbox</a> </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                        </div>
+                                    </div>
+                                    <div id="myModal" class="modal fade">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                    <h4 class="modal-title">Submit Form</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>Thank you for submitting </p>
+                                                    <ul ng-repeat="file in Files">
+                                                        <li>{{file.name}}</li>
+                                                    </ul>
+                                                    <p >for {{pet}}</p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-inverse" data-dismiss="modal">Close</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" ng-hide="hideDiv">
+                                        <div class="container ">
+                                            <div class="col-md-1"></div>
+                                            <div class="col-md-4 margin-bottom50">
+                                                <input type="button" class="btn btn-inverse " ng-click="submitClaim()" ng-disabled="isDisable" value="Submit" />
+                                                <a href="#" ng-click="cancelUpload()" class="link">or maybe later</a>
                                             </div>
                                         </div>
                                     </div>
@@ -87,10 +124,11 @@
                         </fieldset>
                     </form>
                 </div>
-            </div>
+                <div class="col-md-2">
+                </div>
+                </div>
         </div>
     </div>
-    <script src="/Scripts/lib/FileUploader.js"></script>
     <script src="/Scripts/app/Home/HomeApp.js"></script>
     <script src="/Scripts/app/Home/HomeController.js"></script>
     <script src="/Scripts/app/Home/HomeService.js"></script>
