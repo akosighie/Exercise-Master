@@ -32,3 +32,8 @@
     text-decoration: underline;
     color: black;
 }
+.hideFiles {
+    display: none;
+}
+
+#fileselect{display: none;}

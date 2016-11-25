@@ -108,10 +108,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\CustomController\JsonNetResult.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Pets.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -137,9 +139,15 @@
     <Content Include="Content\BootstrapCss\bootstrap-theme.css.map" />
     <Content Include="Content\BootstrapCss\bootstrap.min.css.map" />
     <Content Include="Content\BootstrapCss\bootstrap.css.map" />
+    <Content Include="Scripts\app\Home\HomeApp.js" />
+    <Content Include="Scripts\app\Home\HomeController.js" />
+    <Content Include="Scripts\app\Home\HomeService.js" />
+    <Content Include="Scripts\lib\angular\angular-route.js" />
+    <Content Include="Scripts\lib\angular\angular-route.min.js" />
     <Content Include="Scripts\lib\angular\angular.js" />
     <Content Include="Scripts\lib\angular\angular.min.js" />
     <Content Include="Scripts\lib\angular\angular.min.js.map" />
+    <Content Include="Scripts\lib\angular\angular-route.min.js.map" />
     <None Include="Scripts\lib\jquery\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\lib\angular\angular-mocks.js" />
     <Content Include="Scripts\lib\bootstrap\bootstrap.js" />
@@ -163,8 +171,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
-    <Folder Include="Scripts\app\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

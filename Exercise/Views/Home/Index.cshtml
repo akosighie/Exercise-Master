@@ -11,10 +11,12 @@
     <link rel="stylesheet" href="/Content/BootstrapCss/bootstrap.css">
     <link href="/Content/BootstrapCss/bootstrap.min.css" rel="stylesheet">
     <link href="/Content/CustomCss/style.css" rel="stylesheet">
-
+    <script src="/Scripts/lib/jquery/jquery-1.9.1.js"></script>
+    <script src="/Scripts/lib/jquery/jquery-1.9.1.min.js"></script>
+    <script src="/Scripts/lib/angular/angular-route.js"></script>
 </head>
-<body id="home">
-    <div id="mainBody">
+<body id="home" ng-app="app.Home">
+    <div id="mainBody" ng-controller="homeController" ng-init="init()">
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
@@ -46,36 +48,36 @@
                                                 <h4>Make a claim for your pet</h4>
                                             </div>
                                             <div class="col-md-6 text-left">
-                                                <select class="form-control">
-                                                    <option value="one">One</option>
-                                                    <option value="two">Two</option>
-                                                    <option value="three">Three</option>
-                                                    <option value="four">Four</option>
-                                                    <option value="five">Five</option>
+                                                <select class="form-control" name="selectPets"
+                                                        ng-model="petName"
+                                                        ng-options="p.PetName for p in petList"
+                                                        ng-required="true"
+                                                        ng-change="seletedPets(petName)">
+                                                    <option value=""></option>
                                                 </select>
                                             </div>
                                         </div>
-                                       
+
                                     </div>
                                 </div>
-                                <div class="row margin-top80">
+                                <div class="row margin-top80" ng-hide="hideDiv">
                                     <div class="container ">
                                         <div class="col-md-1"></div>
                                         <div class="col-md-4">
-                                            <label>Attach Rover's invoice for us here</label>
+                                            <label>Attach {{pet}}'s invoice for us here</label>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row ">
+                                <div class="row " ng-hide="hideDiv">
                                     <div class="container ">
                                         <div class="col-md-1"></div>
                                         <div class="col-md-4">
                                             <input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="300000" />
 
                                             <div>
-                                                <label for="fileselect">Files to upload:</label>
+                                                <label class="hideFiles" for="fileselect">Files to upload:</label>
                                                 <input type="file" id="fileselect" name="fileselect[]" multiple="multiple" />
-                                                <div id="filedrag"><span class="glyphicon glyphicon-file"></span>Drag and drop, or <a href="#" class="link">select from inbox</a> </div>
+                                                <div id="filedrag"><span class="glyphicon glyphicon-file"></span>Drag and drop, or <a href="#" id="uploadLink" ng-click="submitUpload()" class="link">select from inbox</a> </div>
                                             </div>
                                         </div>
                                     </div>
